@@ -1,8 +1,8 @@
 'use client'
 
 import React from 'react'
-import { Box } from '@mui/material'
 import Profile from './Profile'
+import Logo from './Logo'
 
 export default function Sidebar() {
 	const mockMenu = [
@@ -21,15 +21,25 @@ export default function Sidebar() {
 	]
 
 	return (
-		<Box className='flex flex-col p-24'>
-			<Profile />
-			{mockMenu.map((item) => {
-				return (
-					<a className='mb-4' key={item.path} href={item.path}>
-						{item.label}
-					</a>
-				)
-			})}
-		</Box>
+		<div className='flex flex-col justify-between p-24'>
+			<div>
+				<Logo />
+				<Profile />
+			</div>
+			<div className='flex flex-col'>
+				{mockMenu.map((item) => {
+					return (
+						<a
+							className='mb-4 hover:text-secondary'
+							key={item.path}
+							href={item.path}
+						>
+							{item.label}
+						</a>
+					)
+				})}
+			</div>
+			<div>Logout</div>
+		</div>
 	)
 }
